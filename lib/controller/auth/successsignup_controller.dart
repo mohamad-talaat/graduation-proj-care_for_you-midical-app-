@@ -1,5 +1,6 @@
-import 'package:e_commerce_app/core/pagescall/pagename.dart';
 import 'package:get/get.dart';
+import 'package:graduation_project/core/routes.dart';
+
 
 abstract class SuccessSignUpController extends GetxController {
   goToPageLogin();

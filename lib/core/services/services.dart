@@ -1,17 +1,20 @@
-import 'package:firebase_core/firebase_core.dart';
+
 import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:get/get_state_manager/src/rx_flutter/rx_disposable.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class MyServices extends GetxService {
-  late SharedPreferences sharedPreferences;
-
-  Future<MyServices> init() async {
-    await Firebase.initializeApp();
-    sharedPreferences = await SharedPreferences.getInstance();
-    return this;
+SharedPreferences? sharedPrefer;
+class SettingServices extends GetxService{
+  SharedPreferences? sharedPrefer;
+  Future<SettingServices> init() async {
+    sharedPrefer = await SharedPreferences.getInstance();
+    return this ; // because of the error , but not usefull
   }
+
 }
 
-initialServices() async {
-  await Get.putAsync(() => MyServices().init());
+intialServices() {
+  Get.putAsync(()=>SettingServices().init());
+
 }

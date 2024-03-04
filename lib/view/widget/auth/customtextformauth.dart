@@ -24,18 +24,26 @@ class CustomTextFormAuth extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDark=Theme.of(context).brightness==Brightness.dark;
+  dynamic fontcolor=isDark?Colors.white:Colors.black;
     return Container(
       margin: const EdgeInsets.only(bottom: 20),
       child: TextFormField(
+        style:TextStyle(color:fontcolor),
         keyboardType: isNumber
             ? const TextInputType.numberWithOptions(decimal: true)
             : TextInputType.text,
+
         validator: valid,
         controller: mycontroller,
         obscureText: obscureText == null || obscureText == false  ? false : true,
         decoration: InputDecoration(
+
             hintText: hinttext,
-            hintStyle: const TextStyle(fontSize: 14),
+            labelStyle: Theme.of(context)
+                .textTheme
+                .bodyText1, // جعل النص يظهر في أقصى اليسار
+            hintStyle: const TextStyle(fontSize: 14 ),
             floatingLabelBehavior: FloatingLabelBehavior.always,
             contentPadding:
                 const EdgeInsets.symmetric(vertical: 5, horizontal: 30),
@@ -44,7 +52,7 @@ class CustomTextFormAuth extends StatelessWidget {
                 child: Text(labeltext)),
             suffixIcon: InkWell(child: Icon(iconData), onTap: onTapIcon),
             border:
-                OutlineInputBorder(borderRadius: BorderRadius.circular(30))),
+                OutlineInputBorder(borderRadius: BorderRadius.circular(5))),
       ),
     );
   }
